@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://6gtcfr4qd7qq"]
+
+[ext_resource type="Texture2D" uid="uid://8biuhuejk82k" path="res://texture/Card_Shovel.png" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://bp4pw8r0qnpmv" path="res://shovel.gd" id="1_4c57u"]
+[ext_resource type="Texture2D" uid="uid://blxq47227p1mr" path="res://texture/Card_Pot.png" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://di6mhhis2dgv0" path="res://texture/Card_Spoon.png" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://d2tlfhvfbe4tx" path="res://LeftHand.gd" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bw6namvm3c2st" path="res://texture/Card_Paste.png" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://c3j7xtpa681rx" path="res://pot.gd" id="2_kek77"]
+[ext_resource type="Script" uid="uid://dom2ardaas0gb" path="res://paste.gd" id="3_5vw27"]
+[ext_resource type="Script" uid="uid://b6ta8ouom8wcy" path="res://spoon.gd" id="4_272bh"]
+[ext_resource type="Script" uid="uid://blgskhcrrik0u" path="res://RightHand.gd" id="6_7mycd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(50, 70.00001)
+
+[node name="Root" type="Node2D"]
+
+[node name="Shovel" type="Area2D" parent="." groups=["Cards"]]
+position = Vector2(1009, 298)
+scale = Vector2(3, 3)
+script = ExtResource("1_4c57u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shovel"]
+texture = ExtResource("1_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shovel"]
+position = Vector2(-7.6293945e-06, 0)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Pot" type="Area2D" parent="." groups=["Cards"]]
+position = Vector2(766, 298)
+scale = Vector2(3, 3)
+script = ExtResource("2_kek77")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pot"]
+texture = ExtResource("1_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pot"]
+position = Vector2(-7.6293945e-06, 0)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="border" type="Sprite2D" parent="Pot"]
+
+[node name="Label" type="Label" parent="Pot"]
+offset_left = -25.0
+offset_top = -58.0
+offset_right = 25.000004
+offset_bottom = -35.0
+text = "空"
+horizontal_alignment = 1
+
+[node name="Paste" type="Area2D" parent="." groups=["Cards"]]
+position = Vector2(353, 298)
+scale = Vector2(3, 3)
+script = ExtResource("3_5vw27")
+
+[node name="Sprite2D" type="Sprite2D" parent="Paste"]
+texture = ExtResource("2_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paste"]
+position = Vector2(-7.6293945e-06, 0)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Spoon" type="Area2D" parent="." groups=["Cards"]]
+position = Vector2(125, 298)
+scale = Vector2(3, 3)
+script = ExtResource("4_272bh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spoon"]
+texture = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spoon"]
+position = Vector2(-7.6293945e-06, 0)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Label" type="Label" parent="Spoon"]
+offset_left = -25.0
+offset_top = -58.0
+offset_right = 25.000004
+offset_bottom = -35.0
+text = "空"
+horizontal_alignment = 1
+
+[node name="LeftHand" type="Node2D" parent="."]
+script = ExtResource("1_lquwl")
+
+[node name="RightHand" type="Node2D" parent="."]
+script = ExtResource("6_7mycd")
+
+[connection signal="area_entered" from="Spoon" to="Spoon" method="_on_area_entered"]
